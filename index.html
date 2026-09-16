@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MONUMENT — Interior Architecture</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #11110f;
+    color: #f1eee7;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 300;
+}
+
+/* NAV */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+    padding: 28px 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    mix-blend-mode: difference;
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    letter-spacing: .12em;
+}
+
+nav ul {
+    display: flex;
+    gap: 38px;
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+/* HERO */
+
+.hero {
+    height: 100vh;
+    min-height: 700px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+
+    /*
+      Sem vlož svoju luxusnú fotografiu:
+      background-image: url("images/hero.jpg");
+    */
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.72),
+            rgba(0,0,0,.12) 75%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.7)
+        ),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=90");
+
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 5vw 8vh;
+    max-width: 1100px;
+}
+
+.label {
+    font-size: 10px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: #c5bba9;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(65px, 10vw, 155px);
+    line-height: .83;
+    font-weight: 400;
+    letter-spacing: -.055em;
+}
+
+h1 em {
+    font-weight: 400;
+}
+
+.hero-info {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 850px;
+    align-items: end;
+}
+
+.hero-info p {
+    max-width: 390px;
+    color: #c6c2ba;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.discover {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+}
+
+/* INTRO */
+
+.intro {
+    padding: 170px 5vw;
+    background: #eeebe4;
+    color: #171613;
+    display: grid;
+    grid-template-columns: .8fr 1.7fr;
+    gap: 10vw;
+}
+
+.intro h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(45px, 6vw, 88px);
+    font-weight: 400;
+    line-height: .98;
+    letter-spacing: -.04em;
+}
+
+.intro h2 i {
+    color: #827867;
+}
+
+.intro-text {
+    padding-top: 25px;
+}
+
+.intro-text p {
+    font-size: 21px;
+    line-height: 1.65;
+    max-width: 720px;
+}
+
+.intro-text small {
+    display: block;
+    margin-top: 40px;
+    color: #77736b;
+    max-width: 550px;
+    line-height: 1.7;
+}
+
+/* SERVICES */
+
+.services {
+    background: #eeebe4;
+    color: #171613;
+    padding: 80px 5vw 150px;
+}
+
+.section-title {
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: #817a6f;
+}
+
+.service-list {
+    margin-top: 60px;
+    border-top: 1px solid #bbb6ad;
+}
+
+.service {
+    display: grid;
+    grid-template-columns: 80px 1.4fr 1fr 30px;
+    gap: 30px;
+    align-items: center;
+    padding: 34px 0;
+    border-bottom: 1px solid #bbb6ad;
+    transition: .4s;
+}
+
+.service:hover {
+    padding-left: 15px;
+}
+
+.service-number {
+    color: #888176;
+    font-size: 11px;
+}
+
+.service h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 34px;
+    font-weight: 400;
+}
+
+.service p {
+    color: #77736b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.service-arrow {
+    font-size: 22px;
+}
+
+/* PORTFOLIO */
+
+.portfolio {
+    background: #151512;
+    padding: 150px 5vw;
+}
+
+.portfolio-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 70px;
+}
+
+.portfolio h2 {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: clamp(55px, 7vw, 105px);
+    line-height: .85;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1.35fr .75fr;
+    gap: 25px;
+}
+
+.project {
+    position: relative;
+    overflow: hidden;
+    height: 650px;
+}
+
+.project.small {
+    height: 460px;
+    margin-top: 180px;
+}
+
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+    filter: brightness(.78);
+}
+
+.project:hover img {
+    transform: scale(1.06);
+}
+
+.project-info {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.project-name {
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+}
+
+.project-meta {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+}
+
+/* BESPOKE */
+
+.bespoke {
+    min-height: 90vh;
+    padding: 150px 5vw;
+    background: #c8c0b1;
+    color: #171613;
+    display: flex;
+    align-items: center;
+}
+
+.bespoke-content {
+    max-width: 1100px;
+}
+
+.bespoke h2 {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-size: clamp(65px, 10vw, 150px);
+    line-height: .82;
+    letter-spacing: -.05em;
+}
+
+.bespoke h2 i {
+    color: #665e51;
+}
+
+.bespoke p {
+    margin-top: 50px;
+    max-width: 500px;
+    line-height: 1.7;
+    color: #625d54;
+}
+
+/* CATEGORIES */
+
+.categories {
+    padding: 130px 5vw;
+    background: #eeebe4;
+    color: #171613;
+}
+
+.categories-grid {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.category {
+    height: 470px;
+    position: relative;
+    overflow: hidden;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(.75);
+    transition: 1s;
+}
+
+.category:hover img {
+    transform: scale(1.05);
+}
+
+.category-title {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    font-family: "Playfair Display", serif;
+    font-size: 31px;
+    color: white;
+}
+
+/* MANIFESTO */
+
+.manifesto {
+    min-height: 75vh;
+    padding: 130px 5vw;
+    display: flex;
+    align-items: center;
+    background: #11110f;
+}
+
+.manifesto h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 8vw, 125px);
+    font-weight: 400;
+    line-height: .86;
+    letter-spacing: -.045em;
+}
+
+.manifesto h2 i {
+    color: #aaa294;
+}
+
+/* CONTACT */
+
+.contact {
+    background: #171613;
+    padding: 150px 5vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10vw;
+    border-top: 1px solid #383630;
+}
+
+.contact h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 7vw, 105px);
+    line-height: .86;
+    font-weight: 400;
+}
+
+.contact h2 i {
+    color: #bcb3a3;
+}
+
+.contact-text {
+    margin-top: 40px;
+    color: #89857c;
+    max-width: 400px;
+    line-height: 1.7;
+}
+
+form {
+    border-top: 1px solid #44423c;
+}
+
+.field {
+    border-bottom: 1px solid #44423c;
+    padding: 22px 0;
+}
+
+.field label {
+    display: block;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    color: #77736b;
+    margin-bottom: 9px;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+button {
+    margin-top: 30px;
+    padding: 16px 25px;
+    border-radius: 50px;
+    border: 1px solid #666159;
+    background: transparent;
+    color: white;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 25px 5vw;
+    border-top: 1px solid #36342f;
+    background: #11110f;
+    color: #67635c;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    nav ul {
+        display:none;
+    }
+
+    .hero-content {
+        padding-bottom: 50px;
+    }
+
+    .hero-info {
+        display:block;
+    }
+
+    .discover {
+        margin-top:30px;
+    }
+
+    .intro {
+        grid-template-columns:1fr;
+        gap:50px;
+        padding:100px 7vw;
+    }
+
+    .service {
+        grid-template-columns:40px 1fr 25px;
+    }
+
+    .service p {
+        display:none;
+    }
+
+    .project-grid {
+        grid-template-columns:1fr;
+    }
+
+    .project,
+    .project.small {
+        height:500px;
+        margin-top:0;
+    }
+
+    .categories-grid {
+        grid-template-columns:1fr;
+    }
+
+    .category {
+        height:450px;
+    }
+
+    .contact {
+        grid-template-columns:1fr;
+        padding:100px 7vw;
+    }
+
+    footer {
+        display:block;
+        line-height:2.2;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="logo">MONUMENT</div>
+
+    <ul>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#sluzby">Služby</a></li>
+        <li><a href="#projekty">Projekty</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-image"></div>
+
+    <div class="hero-content">
+
+        <div class="label">
+            Interior Architecture · Bespoke Living
+        </div>
+
+        <h1>
+            Spaces<br>
+            with <em>presence.</em>
+        </h1>
+
+        <div class="hero-info">
+
+            <p>
+                Butikové interiérové štúdio tvorby výnimočných
+                rezidencií, interiérov a nábytku na mieru.
+            </p>
+
+            <div class="discover">
+                Objaviť projekty ↓
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro" id="studio">
+
+    <div>
+        <div class="section-title">01 / Studio</div>
+
+        <h2>
+            Luxus nie je<br>
+            <i>okázalosť.</i>
+        </h2>
+    </div>
+
+    <div class="intro-text">
+
+        <p>
+            Vytvárame interiéry s charakterom.
+            Priestory, kde architektúra, materiály,
+            svetlo a nábytok vytvárajú jeden dokonale
+            premyslený celok.
+        </p>
+
+        <small>
+            Od prvého konceptu až po posledný detail
+            realizácie. Pre súkromné rezidencie,
+            apartmány, vily a reprezentatívne priestory.
+        </small>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="services" id="sluzby">
+
+    <div class="section-title">
+        02 / Služby
+    </div>
+
+    <div class="service-list">
+
+        <div class="service">
+            <div class="service-number">01</div>
+
+            <h3>
+                Interiérový dizajn
+            </h3>
+
+            <p>
+                Koncept, dispozícia, materiály,
+                osvetlenie, nábytok a kompletná
+                projektová dokumentácia.
+            </p>
+
+            <div class="service-arrow">↗</div>
+        </div>
+
+
+        <div class="service">
+            <div class="service-number">02</div>
+
+            <h3>
+                Realizácie
+            </h3>
+
+            <p>
+                Kompletná realizácia interiéru
+                od stavebných prác až po styling.
+            </p>
+
+            <div class="service-arrow">↗</div>
+        </div>
+
+
+        <div class="service">
+            <div class="service-number">03</div>
+
+            <h3>
+                Nábytok na mieru
+            </h3>
+
+            <p>
+                Kuchyne, vstavané skrine, šatníky,
+                knižnice, TV steny a nábytkové zostavy.
+            </p>
+
+            <div class="service-arrow">↗</div>
+        </div>
+
+
+        <div class="service">
+            <div class="service-number">04</div>
+
+            <h3>
+                Rezidencie & domy
+            </h3>
+
+            <p>
+                Komplexný návrh domu a interiéru
+                s dôrazom na architektúru a detail.
+            </p>
+
+            <div class="service-arrow">↗</div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section class="portfolio" id="projekty">
+
+    <div class="portfolio-heading">
+
+        <div>
+            <div class="section-title">
+                03 / Selected residences
+            </div>
+
+            <h2>
+                Our<br>
+                work.
+            </h2>
+        </div>
+
+        <div class="section-title">
+            01 — 04
+        </div>
+
+    </div>
+
+
+    <div class="project-grid">
+
+        <article class="project">
+
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=90">
+
+            <div class="project-info">
+
+                <div>
+                    <div class="project-name">
+                        Villa N°01
+                    </div>
+
+                    <div class="project-meta">
+                        Private Residence · 2026
+                    </div>
+                </div>
+
+                <div class="project-meta">
+                    Bratislava
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="project small">
+
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=90">
+
+            <div class="project-info">
+
+                <div>
+                    <div class="project-name">
+                        Residence N°02
+                    </div>
+
+                    <div class="project-meta">
+                        Apartment · 2026
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- BESPOKE -->
+
+<section class="bespoke">
+
+    <div class="bespoke-content">
+
+        <div class="section-title">
+            04 / Bespoke
+        </div>
+
+        <h2>
+            Made<br>
+            <i>for living.</i>
+        </h2>
+
+        <p>
+            Nábytok nevnímame ako doplnok.
+            Je súčasťou architektúry priestoru.
+            Každá kuchyňa, skriňa, šatník či
+            nábytková zostava vzniká pre konkrétny
+            interiér a konkrétneho človeka.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+    <div class="section-title">
+        05 / Bespoke collection
+    </div>
+
+    <div class="categories-grid">
+
+        <div class="category">
+
+            <img src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?auto=format&fit=crop&w=1200&q=90">
+
+            <div class="category-title">
+                Kitchens
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <img src="https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1200&q=90">
+
+            <div class="category-title">
+                Wardrobes
+            </div>
+
+        </div>
+
+
+        <div class="category">
+
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90">
+
+            <div class="category-title">
+                Living
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MANIFESTO -->
+
+<section class="manifesto">
+
+    <div>
+
+        <div class="section-title">
+            06 / Philosophy
+        </div>
+
+        <h2>
+            Less noise.<br>
+            More <i>character.</i>
+        </h2>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="kontakt">
+
+    <div>
+
+        <div class="section-title">
+            07 / Private consultation
+        </div>
+
+        <h2>
+            Let's create<br>
+            something<br>
+            <i>remarkable.</i>
+        </h2>
+
+        <p class="contact-text">
+            Máte byt, dom alebo rezidenciu,
+            ktorá si zaslúži individuálny prístup?
+            Napíšte nám o vašom projekte.
+        </p>
+
+    </div>
+
+
+    <form>
+
+        <div class="field">
+            <label>Meno</label>
+            <input type="text" placeholder="Vaše meno">
+        </div>
+
+        <div class="field">
+            <label>E-mail</label>
+            <input type="email" placeholder="vas@email.sk">
+        </div>
+
+        <div class="field">
+            <label>Typ projektu</label>
+            <input type="text" placeholder="Villa / Apartment / Interior">
+        </div>
+
+        <div class="field">
+            <label>Správa</label>
+            <textarea rows="4" placeholder="Povedzte nám o vašom projekte..."></textarea>
+        </div>
+
+        <button type="button">
+            Odoslať dopyt ↗
+        </button>
+
+    </form>
+
+</section>
+
+
+<footer>
+
+    <span>MONUMENT © 2026</span>
+
+    <span>
+        Interior Architecture · Bespoke Living
+    </span>
+
+    <span>
+        Bratislava · Slovakia
+    </span>
+
+</footer>
+
+</body>
+</html>
